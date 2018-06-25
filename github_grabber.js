@@ -1,7 +1,7 @@
-const fs = require('fs')
-const qs = require('qs')
-const http = require('http')
-const https = require('https')
+const fs = require('fs');
+// const qs = require('qs'); 
+const http = require('http');
+const https = require('https');
 
 function buildOptionsObj (username) {
   return {
