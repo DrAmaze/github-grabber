@@ -1,23 +1,23 @@
-const fs = require('fs')
-const http = require('http')
-const qs = require('querystring')
-const cache = {}
+const fs = require('fs');
+const http = require('http');
+const qs = require('querystring');
+const cache = {};
 
 fs.readFile('./animals.txt', 'utf-8', (err, data) => {
   if (err) {
-    console.log(err)
-    return
+    console.log(err);
+    return;
   }
-  console.log(data)
-})
+  console.log(data);
+});
 
-// fs.writeFile('./example.txt', 'I will be written to example.txt', err => {
-//   if (err) {
-//     console.log(err)
-//     return
-//   }
-//   console.log('file successfully written')
-// })
+fs.writeFile('./example.txt', 'I will be written to example.txt', err => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log('file successfully written');
+});
 
 // function selectAnimals(animalString, animalLetter) {
 //   return animalString
