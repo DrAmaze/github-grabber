@@ -26,7 +26,7 @@ function selectAnimals(animalString, animalLetter) {
     .join('\n');
 }
 
-const animalLetter = process.argv[1].toUpperCase();
+const animalLetter = process.argv[2].toUpperCase();
 
 fs.readFile('./animals.txt', 'utf-8', (err, data) => {
   if (err) {
