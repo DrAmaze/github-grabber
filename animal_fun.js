@@ -44,41 +44,41 @@ fs.readFile('./animals.txt', 'utf-8', (err, data) => {
   });
 });
 
-// const animalServer = http.createServer((req, res) => {
-//   const query = req.url.split('?')[1]
-//   if (query !== undefined) {
-//     const animalLetter = qs.parse(query).letter.toUpperCase()
+const animalServer = http.createServer((req, res) => {
+  const query = req.url.split('?')[1];
+  if (query !== undefined) {
+    const animalLet = qs.parse(query).letter.toUpperCase();
 
-//     if (cache[animalLetter] !== undefined) {
-//       res.end(cache[animalLetter])
-//     }
+    if (cache[animalLet] !== undefined) {
+      res.end(cache[animalLet]);
+    }
 
-//     if (animalLetter !== undefined) {
-//       fs.readFile('./animals.txt', 'utf-8', (err, data) => {
-//         if (err) {
-//           console.log(err)
-//           res.end('IT WENT POORLY')
-//           return
-//         }
-//         const animals = selectAnimals(data, animalLetter)
-//         cache[animalLetter] = animals
-//         res.end(animals)
-//       })
-//     }
-//   } else {
-//     if (cache['animals'] !== undefined) {
-//       res.end(cache['animals'])
-//     }
-//     fs.readFile('./animals.txt', 'utf-8', (err, data) => {
-//       if (err) {
-//         console.log(err)
-//         res.end('IT WENT POORLY')
-//         return
-//       }
-//       cache['animals'] = data
-//       res.end(data)
-//     })
-//   }
-// })
+    if (animalLet !== undefined) {
+      fs.readFile('./animals.txt', 'utf-8', (err, data) => {
+        if (err) {
+          console.log(err);
+          res.end('IT WENT POORLY');
+          return;
+        }
+        const animals = selectAnimals(data, animalLet);
+        cache[animalLet] = animals;
+        res.end(animals);
+      });
+    }
+  } else {
+    if (cache['animals'] !== undefined) {
+      res.end(cache['animals']);
+    }
+    fs.readFile('./animals.txt', 'utf-8', (err, data) => {
+      if (err) {
+        console.log(err);
+        res.end('IT WENT POORLY');
+        return;
+      }
+      cache['animals'] = data;
+      res.end(data);
+    });
+  }
+});
 
-// animalServer.listen(8000, () => console.log("I'm listening on port 8000"))
+animalServer.listen(8000, () => console.log("I'm listening on port 8000"));
