@@ -13,5 +13,7 @@
   "devDependencies": {
     "nodemon": "^1.17.5"
   },
-  "dependencies": {}
+  "dependencies": {
+    "qs": "^6.5.2"
+  }
 }
